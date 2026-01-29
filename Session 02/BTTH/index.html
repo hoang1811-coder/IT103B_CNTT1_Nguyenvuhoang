@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let userName = prompt("Enter user name:");
+        let roleInput = prompt("Enter role (admin / student / guest):");
+        let balanceInput = prompt("Enter card balance:");
+        let cardStatusInput = prompt("Enter card status (true / false):");
+        let overdueDaysInput = prompt("Enter overdue days:");
+
+        let role = roleInput ? roleInput.toLowerCase() : "";
+        let balance = Number(balanceInput) || 0;
+        let cardStatus = cardStatusInput === "true";
+        let overdueDays = Number(overdueDaysInput) || 0;
+
+        let roleMessage = "";
+        if (role === "admin") {
+            roleMessage = "Chào Admin, bạn có toàn quyền hệ thống";
+        } else if (role === "student") {
+            roleMessage = "Chào sinh viên, bạn có thể mượn sách";
+        } else if (role === "guest") {
+            roleMessage = "Chào khách, bạn chỉ có thể đọc tại chỗ";
+        } else {
+            roleMessage = "Lỗi: Vai trò không hợp lệ!";
+        }
+
+        let borrowResult = "";
+        let rejectReason = "";
+
+        if (!userName) {
+            borrowResult = "YÊU CẦU BỊ TỪ CHỐI";
+            rejectReason = "Tên người dùng không hợp lệ";
+        } else if (role !== "student" && role !== "admin") {
+            borrowResult = "YÊU CẦU BỊ TỪ CHỐI";
+            rejectReason = "Không đủ quyền mượn sách";
+        } else if (balance <= 0 || !cardStatus) {
+            borrowResult = "YÊU CẦU BỊ TỪ CHỐI";
+            rejectReason = "Tài khoản hoặc thẻ thư viện không hợp lệ";
+        } else {
+            borrowResult = "ĐƯỢC PHÉP MƯỢN SÁCH";
+        }
+
+        let fine = 0;
+        let returnStatus = "";
+
+        if (overdueDays <= 0) {
+            returnStatus = "Cảm ơn bạn đã trả đúng hạn";
+        } else if (overdueDays <= 5) {
+            fine = overdueDays * 5000;
+            returnStatus = `Quá hạn ${overdueDays} ngày`;
+        } else if (overdueDays <= 10) {
+            fine = overdueDays * 10000;
+            returnStatus = `Quá hạn ${overdueDays} ngày`;
+        } else {
+            fine = 200000;
+            returnStatus = `Quá hạn ${overdueDays} ngày - TÀI KHOẢN BỊ KHÓA`;
+        }
+
+        console.log(`--- HỆ THỐNG MƯỢN TRẢ ---
+
+        Người dùng: ${userName ? userName.toUpperCase() : "KHÔNG XÁC ĐỊNH"}
+
+        Quyền hạn: ${roleMessage}
+
+        Kết quả mượn: ${borrowResult}${rejectReason ? " (" + rejectReason + ")" : ""}
+
+        Tình trạng trả sách: ${returnStatus}
+
+        Tiền phạt: ${fine} VNĐ
+        `);
+
+    </script>
+</body>
+</html>

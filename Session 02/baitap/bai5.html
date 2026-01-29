@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let bookName = prompt("Enter book name:");
+        let bookStatus = prompt("Enter book status (available / borrowed):");
+        let publishYear = parseInt(prompt("Enter publish year:"));
+
+        let currentYear = new Date().getFullYear();
+
+        if (bookStatus === "available" && currentYear - publishYear <= 5) {
+            alert("This book is new and available for borrowing");
+        } else if (bookStatus === "borrowed" && currentYear - publishYear <= 10) {
+            alert("This book is borrowed but still quite new, you can borrow it later");
+        } else if (bookStatus === "borrowed" && currentYear - publishYear > 10) {
+            alert("This book is borrowed and quite old");
+        } else if (bookStatus === "available" && currentYear - publishYear > 5) {
+            alert("This book is available but old");
+        }
+
+    </script>
+</body>
+</html>

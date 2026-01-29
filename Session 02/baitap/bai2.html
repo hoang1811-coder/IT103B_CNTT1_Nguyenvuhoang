@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let soLuongSach = parseInt(prompt("Nhập số lượng sách trong thư viện:"));
+        let thongBao = "";
+
+        if (soLuongSach < 10) {
+            thongBao = "Thư viện có ít sách";
+        } else if (soLuongSach >= 10 && soLuongSach <= 20) {
+            thongBao = "Thư viện có số lượng sách vừa đủ";
+        } else {
+            thongBao = "Thư viện có nhiều sách";
+        }
+
+        alert(thongBao);
+
+    </script>
+</body>
+</html>
