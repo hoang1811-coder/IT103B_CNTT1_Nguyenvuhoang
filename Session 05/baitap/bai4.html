@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let maSach = [];
+        let tenSach = [];
+        let tinhTrang = [];
+
+        let soLuong = parseInt(prompt("Có bao nhiêu cuốn sách cần kiểm tra tình trạng hôm nay?"));
+
+        for (let i = 0; i < soLuong; i++) {
+            let ma;
+            do {
+                ma = prompt("Nhập mã sách:");
+            } while (ma === "");
+
+            let ten;
+            do {
+                ten = prompt("Nhập tên sách:");
+            } while (ten === "");
+
+            let chon = parseInt(prompt("Nhập tình trạng ban đầu (1: Hỏng nhẹ, 2: Hỏng nặng, 3: Cần sửa gấp):"));
+            let trangThai = "";
+
+            if (chon === 1) trangThai = "Hỏng nhẹ";
+            else if (chon === 2) trangThai = "Hỏng nặng";
+            else trangThai = "Cần sửa gấp";
+
+            maSach.push(ma);
+            tenSach.push(ten);
+            tinhTrang.push(trangThai);
+        }
+
+        console.log("Danh sách hiện tại (" + maSach.length + " cuốn):");
+        for (let i = 0; i < maSach.length; i++) {
+            console.log((i + 1) + ". " + maSach[i] + " - " + tenSach[i] + " - " + tinhTrang[i]);
+        }
+
+        let luaChon;
+        do {
+            luaChon = parseInt(prompt(
+                "Bạn muốn làm gì?\n" +
+                "1. Sửa tình trạng một cuốn sách\n" +
+                "2. Loại bỏ một cuốn sách\n" +
+                "0. Kết thúc và in báo cáo cuối"
+            ));
+
+            if (luaChon === 1) {
+                let maSua = prompt("Nhập mã sách cần sửa:");
+                let viTri = -1;
+
+                for (let i = 0; i < maSach.length; i++) {
+                    if (maSach[i] === maSua) {
+                        viTri = i;
+                        break;
+                    }
+                }
+
+                if (viTri !== -1) {
+                    let chonMoi = parseInt(prompt(
+                        "Chọn tình trạng mới:\n" +
+                        "1. Hỏng nhẹ\n" +
+                        "2. Hỏng nặng\n" +
+                        "3. Cần sửa gấp\n" +
+                        "4. Đã sửa xong\n" +
+                        "5. Loại bỏ"
+                    ));
+
+                    if (chonMoi === 1) tinhTrang[viTri] = "Hỏng nhẹ";
+                    else if (chonMoi === 2) tinhTrang[viTri] = "Hỏng nặng";
+                    else if (chonMoi === 3) tinhTrang[viTri] = "Cần sửa gấp";
+                    else if (chonMoi === 4) tinhTrang[viTri] = "Đã sửa xong";
+                    else if (chonMoi === 5) tinhTrang[viTri] = "Loại bỏ";
+                }
+
+                console.log("Danh sách hiện tại (" + maSach.length + " cuốn):");
+                for (let i = 0; i < maSach.length; i++) {
+                    console.log((i + 1) + ". " + maSach[i] + " - " + tenSach[i] + " - " + tinhTrang[i]);
+                }
+            }
+
+            if (luaChon === 2) {
+                let maXoa = prompt("Nhập mã sách cần xóa:");
+                let viTri = -1;
+
+                for (let i = 0; i < maSach.length; i++) {
+                    if (maSach[i] === maXoa) {
+                        viTri = i;
+                        break;
+                    }
+                }
+
+                if (viTri !== -1) {
+                    maSach.splice(viTri, 1);
+                    tenSach.splice(viTri, 1);
+                    tinhTrang.splice(viTri, 1);
+                }
+
+                console.log("Danh sách hiện tại (" + maSach.length + " cuốn):");
+                for (let i = 0; i < maSach.length; i++) {
+                    console.log((i + 1) + ". " + maSach[i] + " - " + tenSach[i] + " - " + tinhTrang[i]);
+                }
+            }
+
+        } while (luaChon !== 0);
+
+        let demDaSua = 0;
+        let demLoaiBo = 0;
+
+        for (let i = 0; i < tinhTrang.length; i++) {
+            if (tinhTrang[i] === "Đã sửa xong") demDaSua++;
+            if (tinhTrang[i] === "Loại bỏ") demLoaiBo++;
+        }
+
+        console.log("BÁO CÁO CUỐI:");
+        console.log("Tổng số sách còn lại: " + maSach.length);
+        console.log("Số sách đã sửa xong: " + demDaSua);
+        console.log("Số sách loại bỏ: " + demLoaiBo);
+
+        if (maSach.length > 0) {
+            console.log("Danh sách sách còn lại:");
+            for (let i = 0; i < maSach.length; i++) {
+                console.log((i + 1) + ". " + maSach[i] + " - " + tenSach[i] + " - " + tinhTrang[i]);
+            }
+        }
+
+    </script>
+</body>
+</html>

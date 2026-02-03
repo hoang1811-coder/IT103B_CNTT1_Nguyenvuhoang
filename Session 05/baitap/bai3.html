@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let maSach = [];
+        let tenSach = [];
+        let soLuongTon = [];
+
+        let soLoaiSach = parseInt(prompt("Có bao nhiêu loại sách cần kiểm tra bổ sung hôm nay?"));
+
+        for (let i = 0; i < soLoaiSach; i++) {
+            let ma;
+            do {
+                ma = prompt("Nhập mã sách:");
+            } while (ma === "");
+
+            let ten;
+            do {
+                ten = prompt("Nhập tên sách:");
+            } while (ten === "");
+
+            let soLuong = parseInt(prompt("Nhập số lượng tồn kho hiện tại:"));
+
+            maSach.push(ma);
+            tenSach.push(ten);
+            soLuongTon.push(soLuong);
+        }
+
+        console.log("Danh sách sách cần xem xét bổ sung (" + maSach.length + " loại):");
+
+        for (let i = 0; i < maSach.length; i++) {
+            console.log(
+                (i + 1) + ". Mã: " + maSach[i] +
+                " - Tên: " + tenSach[i] +
+                " - Còn: " + soLuongTon[i] + " bản"
+            );
+        }
+
+        let demCanBoSung = 0;
+        for (let i = 0; i < soLuongTon.length; i++) {
+            if (soLuongTon[i] <= 5) {
+                demCanBoSung++;
+            }
+        }
+
+        console.log("Số sách có tồn kho ≤ 5 bản: " + demCanBoSung + " loại");
+
+        let danhSachHetHang = "";
+        for (let i = 0; i < soLuongTon.length; i++) {
+            if (soLuongTon[i] === 0) {
+                if (danhSachHetHang !== "") {
+                    danhSachHetHang += ", ";
+                }
+                danhSachHetHang += maSach[i];
+            }
+        }
+
+        console.log("Các mã sách đã hết hàng (0 bản): " + danhSachHetHang);
+
+    </script>
+</body>
+</html>
