@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numbers = [];
+
+        while (true) {
+            let choice = prompt(
+                "================== MENU ===================\n" +
+                "1. Nhập số phần tử cần nhập và giá trị các phần tử\n" +
+                "2. In ra giá trị các phần tử đang quản lý\n" +
+                "3. In ra giá trị các phần tử chẵn và tính tổng\n" +
+                "4. In ra giá trị lớn nhất và nhỏ nhất trong mảng\n" +
+                "5. In ra các phần tử là số nguyên tố trong mảng và tính tổng\n" +
+                "6. Nhập vào một số và thống kê trong mảng có bao nhiêu phần tử đó\n" +
+                "7. Thêm một phần tử vào vị trí chỉ định\n" +
+                "8. Thoát\n" +
+                "============================================\n" +
+                "Lựa chọn của bạn:"
+            );
+
+            if (choice === "8") {
+                break;
+            }
+
+            switch (choice) {
+                case "1":
+                    let n = parseInt(prompt("Nhập số phần tử"));
+                    numbers = [];
+                    for (let i = 0; i < n; i++) {
+                        numbers.push(parseInt(prompt("Nhập một số")));
+                    }
+                    break;
+
+                case "2":
+                    console.log(numbers);
+                    break;
+
+                case "3":
+                    let evenSum = 0;
+                    let evenNumbers = [];
+                    for (let i = 0; i < numbers.length; i++) {
+                        if (numbers[i] % 2 === 0) {
+                            evenNumbers.push(numbers[i]);
+                            evenSum += numbers[i];
+                        }
+                    }
+                    console.log(evenNumbers);
+                    console.log(evenSum);
+                    break;
+
+                case "4":
+                    if (numbers.length === 0) {
+                        console.log("Mảng rỗng");
+                    } else {
+                        let max = numbers[0];
+                        let min = numbers[0];
+                        for (let i = 1; i < numbers.length; i++) {
+                            if (numbers[i] > max) max = numbers[i];
+                            if (numbers[i] < min) min = numbers[i];
+                        }
+                        console.log("Max: " + max);
+                        console.log("Min: " + min);
+                    }
+                    break;
+
+                case "5":
+                    let primeSum = 0;
+                    let primeNumbers = [];
+                    for (let i = 0; i < numbers.length; i++) {
+                        let value = numbers[i];
+                        let isPrime = value > 1;
+                        for (let j = 2; j <= Math.sqrt(value); j++) {
+                            if (value % j === 0) {
+                                isPrime = false;
+                                break;
+                            }
+                        }
+                        if (isPrime) {
+                            primeNumbers.push(value);
+                            primeSum += value;
+                        }
+                    }
+                    console.log(primeNumbers);
+                    console.log(primeSum);
+                    break;
+
+                case "6":
+                    let searchValue = parseInt(prompt("Nhập số cần thống kê"));
+                    let count = 0;
+                    for (let i = 0; i < numbers.length; i++) {
+                        if (numbers[i] === searchValue) {
+                            count++;
+                        }
+                    }
+                    console.log(count);
+                    break;
+
+                case "7":
+                    let insertValue = parseInt(prompt("Nhập giá trị cần thêm"));
+                    let position = parseInt(prompt("Nhập vị trí cần thêm"));
+                    if (position >= 0 && position <= numbers.length) {
+                        numbers.splice(position, 0, insertValue);
+                        console.log(numbers);
+                    } else {
+                        console.log("Vị trí không hợp lệ");
+                    }
+                    break;
+
+                default:
+                    console.log("Lựa chọn không hợp lệ");
+            }
+        }
+
+    </script>
+</body>
+</html>

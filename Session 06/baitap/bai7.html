@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("Nhập số lượng phần tử của mảng"));
+
+        let numbers = [];
+
+        for (let i = 0; i < n; i++) {
+            numbers.push(parseInt(prompt("Nhập một số")));
+        }
+
+        let max = -Infinity;
+        let secondMax = -Infinity;
+
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] > max) {
+                secondMax = max;
+                max = numbers[i];
+            } else if (numbers[i] < max && numbers[i] > secondMax) {
+                secondMax = numbers[i];
+            }
+        }
+
+        if (secondMax === -Infinity) {
+            console.log("Không tồn tại số lớn thứ hai");
+        } else {
+            console.log(secondMax);
+        }
+
+    </script>
+</body>
+</html>

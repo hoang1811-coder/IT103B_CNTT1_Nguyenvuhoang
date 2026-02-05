@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("Nhập số phần tử của mảng"));
+        let characters = [];
+        let digits = [];
+
+        for (let i = 0; i < n; i++) {
+            characters.push(prompt("Nhập một ký tự"));
+        }
+
+        for (let i = 0; i < characters.length; i++) {
+            if (!isNaN(characters[i]) && characters[i] !== " ") {
+                digits.push(characters[i]);
+            }
+        }
+
+        if (digits.length > 0) {
+            console.log(digits.join(" "));
+        } else {
+            console.log("Không có ký tự số");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let array1 = ["", false, 0, 5, 10, "Hello world!"];
+        let result1 = [];
+
+        for (let i = 0; i < array1.length; i++) {
+            if (array1[i]) {
+                result1.push(array1[i]);
+            }
+        }
+
+        console.log(result1);
+
+        let array2 = ["", false, 0, undefined, null];
+        let result2 = [];
+
+        for (let i = 0; i < array2.length; i++) {
+            if (array2[i]) {
+                result2.push(array2[i]);
+            }
+        }
+
+        console.log(result2);
+
+        let array3 = [NaN, "test", 4];
+        let result3 = [];
+
+        for (let i = 0; i < array3.length; i++) {
+            if (array3[i]) {
+                result3.push(array3[i]);
+            }
+        }
+
+        console.log(result3);
+
+        let array4 = ["JavaScript", 0, null, true, 7, " "];
+        let result4 = [];
+
+        for (let i = 0; i < array4.length; i++) {
+            if (array4[i]) {
+                result4.push(array4[i]);
+            }
+        }
+
+        console.log(result4);
+
+    </script>
+</body>
+</html>

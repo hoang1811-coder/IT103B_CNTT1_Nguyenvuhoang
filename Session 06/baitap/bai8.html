@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let n = parseInt(prompt("Nhập số phần tử của mảng"));
+        let numbers = [];
+        let isFibonacci = true;
+
+        for (let i = 0; i < n; i++) {
+            numbers.push(parseInt(prompt("Nhập một số")));
+        }
+
+        if (n >= 3) {
+            for (let i = 2; i < numbers.length; i++) {
+                if (numbers[i] !== numbers[i - 1] + numbers[i - 2]) {
+                    isFibonacci = false;
+                    break;
+                }
+            }
+        }
+
+        if (n < 2) {
+            console.log("Không đủ phần tử để kiểm tra dãy Fibonacci");
+        } else if (isFibonacci) {
+            console.log("Là dãy Fibonacci");
+        } else {
+            console.log("Không phải dãy Fibonacci");
+        }
+
+    </script>
+</body>
+</html>
